@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+option objc_class_prefix = "HLW";
+
+package helloworld;
+
+service ImageService {
+    rpc ResizeImage (ImageRequest) returns (ResizedImage) {}
+}
+
+message ImageRequest {
+    bytes image_data = 1;
+    int32 width = 2;
+    int32 height = 3;
+    float quality = 4;
+}
+
+message ResizedImage {
+    bytes image_data_resized = 1;
+    int32 width_resized = 2;
+    int32 height_resized = 3;
+}
