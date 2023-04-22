@@ -22,14 +22,15 @@ import my_pb2
 import my_pb2_grpc
 import cv2
 import numpy as np
-import PIL.Image
+from PIL import Image
+import io
 
 def get_image_from_path(path):
-    image_array = cv2.imread(path)
-    # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image = PIL.Image.fromarray(image_array)
-    image = image.tobytes()
-    return image, image_array.shape[0], image_array.shape[1]
+    img = Image.open(path)
+    buf = io.BytesIO()
+    img.save(buf, format='JPEG')
+    bytes_image = buf.getvalue()
+    return bytes_image
 
 
 
@@ -37,21 +38,21 @@ def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
     # used in circumstances in which the with statement does not fit the needs
     # of the code.
-    print("Will try to reszie image ...")
+
+    print("Will try to run image ...")
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = my_pb2_grpc.ImageServiceStub(channel)
-        image, height, width = get_image_from_path('test1.jpg')
-        response = stub.ResizeImage(my_pb2.ImageRequest(image_data=image, height=height, width=width, quality=80))
-
-        #save image
-        image = PIL.Image.frombytes('RGB', (response.width_resized, response.height_resized), response.image_data_resized)
-        # image = image.reshape((response.height, response.width, 3))
-        image = np.array(image)
-        cv2.imwrite('test1_resized.jpg', image)
+        image_data = get_image_from_path('test3.jpg')
+        # response = stub.ResizeImage(my_pb2.ImageRequest(image_data=image_data, quality=80))
 
 
+        # image = Image.open(io.BytesIO(response.image_data_resized))
+        # image = np.array(image)
+        # cv2.imwrite('test1_resized.jpg', image)
 
-        print("ImageService client received resized image ")
+        response = stub.GetSpoofingResult(my_pb2.ImageRequest(image_data=image_data))
+        print("ImageService client received:  " + str(response.is_spoofing ) + " " + str(response.confidence))
+
 
 if __name__ == '__main__':
     logging.basicConfig()
