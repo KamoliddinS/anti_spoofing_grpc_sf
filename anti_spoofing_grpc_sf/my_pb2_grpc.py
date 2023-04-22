@@ -14,11 +14,6 @@ class ImageServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ResizeImage = channel.unary_unary(
-                '/helloworld.ImageService/ResizeImage',
-                request_serializer=my__pb2.ImageRequest.SerializeToString,
-                response_deserializer=my__pb2.ResizedImage.FromString,
-                )
         self.GetSpoofingResult = channel.unary_unary(
                 '/helloworld.ImageService/GetSpoofingResult',
                 request_serializer=my__pb2.ImageRequest.SerializeToString,
@@ -29,12 +24,6 @@ class ImageServiceStub(object):
 class ImageServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def ResizeImage(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def GetSpoofingResult(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -44,11 +33,6 @@ class ImageServiceServicer(object):
 
 def add_ImageServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ResizeImage': grpc.unary_unary_rpc_method_handler(
-                    servicer.ResizeImage,
-                    request_deserializer=my__pb2.ImageRequest.FromString,
-                    response_serializer=my__pb2.ResizedImage.SerializeToString,
-            ),
             'GetSpoofingResult': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSpoofingResult,
                     request_deserializer=my__pb2.ImageRequest.FromString,
@@ -63,23 +47,6 @@ def add_ImageServiceServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class ImageService(object):
     """Missing associated documentation comment in .proto file."""
-
-    @staticmethod
-    def ResizeImage(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/helloworld.ImageService/ResizeImage',
-            my__pb2.ImageRequest.SerializeToString,
-            my__pb2.ResizedImage.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def GetSpoofingResult(request,

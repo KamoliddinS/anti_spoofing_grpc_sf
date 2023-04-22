@@ -5,23 +5,21 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ImageRequest(_message.Message):
-    __slots__ = ["image_data", "quality"]
-    IMAGE_DATA_FIELD_NUMBER: _ClassVar[int]
-    QUALITY_FIELD_NUMBER: _ClassVar[int]
-    image_data: bytes
-    quality: float
-    def __init__(self, image_data: _Optional[bytes] = ..., quality: _Optional[float] = ...) -> None: ...
-
-class ResizedImage(_message.Message):
-    __slots__ = ["image_data_resized"]
-    IMAGE_DATA_RESIZED_FIELD_NUMBER: _ClassVar[int]
-    image_data_resized: bytes
-    def __init__(self, image_data_resized: _Optional[bytes] = ...) -> None: ...
+    __slots__ = ["bucket_name", "object_name"]
+    BUCKET_NAME_FIELD_NUMBER: _ClassVar[int]
+    OBJECT_NAME_FIELD_NUMBER: _ClassVar[int]
+    bucket_name: str
+    object_name: str
+    def __init__(self, bucket_name: _Optional[str] = ..., object_name: _Optional[str] = ...) -> None: ...
 
 class SpoofingResult(_message.Message):
-    __slots__ = ["confidence", "is_spoofing"]
-    CONFIDENCE_FIELD_NUMBER: _ClassVar[int]
-    IS_SPOOFING_FIELD_NUMBER: _ClassVar[int]
-    confidence: float
-    is_spoofing: bool
-    def __init__(self, is_spoofing: bool = ..., confidence: _Optional[float] = ...) -> None: ...
+    __slots__ = ["bucket_name", "is_spoofed", "object_name", "score"]
+    BUCKET_NAME_FIELD_NUMBER: _ClassVar[int]
+    IS_SPOOFED_FIELD_NUMBER: _ClassVar[int]
+    OBJECT_NAME_FIELD_NUMBER: _ClassVar[int]
+    SCORE_FIELD_NUMBER: _ClassVar[int]
+    bucket_name: str
+    is_spoofed: bool
+    object_name: str
+    score: float
+    def __init__(self, is_spoofed: bool = ..., score: _Optional[float] = ..., bucket_name: _Optional[str] = ..., object_name: _Optional[str] = ...) -> None: ...

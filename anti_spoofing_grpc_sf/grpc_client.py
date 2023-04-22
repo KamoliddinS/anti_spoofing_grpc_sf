@@ -20,17 +20,9 @@ import logging
 import grpc
 import my_pb2
 import my_pb2_grpc
-import cv2
-import numpy as np
-from PIL import Image
-import io
 
-def get_image_from_path(path):
-    img = Image.open(path)
-    buf = io.BytesIO()
-    img.save(buf, format='JPEG')
-    bytes_image = buf.getvalue()
-    return bytes_image
+BUCKET_NAME = "tempobjects"
+OBJECT_NAME = "test1.jpg"
 
 
 
@@ -42,16 +34,8 @@ def run():
     print("Will try to run image ...")
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = my_pb2_grpc.ImageServiceStub(channel)
-        image_data = get_image_from_path('test3.jpg')
-        # response = stub.ResizeImage(my_pb2.ImageRequest(image_data=image_data, quality=80))
-
-
-        # image = Image.open(io.BytesIO(response.image_data_resized))
-        # image = np.array(image)
-        # cv2.imwrite('test1_resized.jpg', image)
-
-        response = stub.GetSpoofingResult(my_pb2.ImageRequest(image_data=image_data))
-        print("ImageService client received:  " + str(response.is_spoofing ) + " " + str(response.confidence))
+        response = stub.GetSpoofingResult(my_pb2.ImageRequest(bucket_name=BUCKET_NAME, object_name=OBJECT_NAME))
+        print("ImageService client received: Is   " + str(response.is_spoofed ) + " " + str(response.score) + " " + str(response.bucket_name) + " " + str(response.object_name))
 
 
 if __name__ == '__main__':

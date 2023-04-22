@@ -8,21 +8,19 @@ option objc_class_prefix = "HLW";
 package helloworld;
 
 service ImageService {
-    rpc ResizeImage (ImageRequest) returns (ResizedImage) {}
-
-    rpc GetSpoofingResult (ImageRequest) returns (SpoofingResult) {}
+       rpc GetSpoofingResult (ImageRequest) returns (SpoofingResult) {}
 }
 
 message ImageRequest {
-    bytes image_data = 1;
-    float quality = 2;
+    string bucket_name = 1;
+    string object_name = 2;
 }
 
-message ResizedImage {
-    bytes image_data_resized = 1;
-}
+
 
 message SpoofingResult {
-    bool is_spoofing = 1;
-    float confidence = 2;
+    bool is_spoofed = 1;
+    float score = 2;
+    string bucket_name = 3;
+    string object_name = 4;
 }
