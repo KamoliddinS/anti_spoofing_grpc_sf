@@ -32,7 +32,7 @@ def run():
     # used in circumstances in which the with statement does not fit the needs
     # of the code.
 
-    with grpc.insecure_channel('localhost:50051') as channel:
+    with grpc.insecure_channel('localhost:43785') as channel:
         stub = my_pb2_grpc.ImageServiceStub(channel)
         print("ImageService client created")
         test_speed = 0

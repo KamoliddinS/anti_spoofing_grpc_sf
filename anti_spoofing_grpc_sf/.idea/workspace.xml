@@ -7,6 +7,7 @@
     <list default="true" id="564399f6-0906-4c48-b9c9-9a3944f475a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grpc_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/grpc_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/grpc_server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +57,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.grpc_server">
+  <component name="RunManager" selected="Python.grpc_client">
     <configuration name="grpc_client (1)" type="PythonConfigurationType" factoryName="Python">
       <module name="anti_spoofing_grpc_sf" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,7 +206,7 @@
       <updated>1681905185239</updated>
       <workItem from="1681905186295" duration="2609000" />
       <workItem from="1682165759613" duration="366000" />
-      <workItem from="1682166132623" duration="9633000" />
+      <workItem from="1682166132623" duration="17949000" />
     </task>
     <servers />
   </component>
@@ -226,8 +227,8 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/anti_spoofing_grpc_sf$grpc_client__2_.coverage" NAME="grpc_client (2) Coverage Results" MODIFIED="1682175103901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/anti_spoofing_grpc_sf$grpc_client__1_.coverage" NAME="grpc_client (1) Coverage Results" MODIFIED="1682175100977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/anti_spoofing_grpc_sf$grpc_server.coverage" NAME="grpc_server Coverage Results" MODIFIED="1682172546822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/anti_spoofing_grpc_sf$grpc_server.coverage" NAME="grpc_server Coverage Results" MODIFIED="1682232882615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/anti_spoofing_grpc_sf$grpc_client__3_.coverage" NAME="grpc_client (3) Coverage Results" MODIFIED="1682175106651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/anti_spoofing_grpc_sf$grpc_client.coverage" NAME="grpc_client Coverage Results" MODIFIED="1682175500861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/anti_spoofing_grpc_sf$grpc_client.coverage" NAME="grpc_client Coverage Results" MODIFIED="1682232915551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
