@@ -16,7 +16,7 @@
 from __future__ import print_function
 
 import logging
-
+import time
 import grpc
 import my_pb2
 import my_pb2_grpc
@@ -26,17 +26,23 @@ OBJECT_NAME = "test1.jpg"
 
 
 
+
 def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
     # used in circumstances in which the with statement does not fit the needs
     # of the code.
 
-    print("Will try to run image ...")
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = my_pb2_grpc.ImageServiceStub(channel)
-        response = stub.GetSpoofingResult(my_pb2.ImageRequest(bucket_name=BUCKET_NAME, object_name=OBJECT_NAME))
-        print("ImageService client received: Is   " + str(response.is_spoofed ) + " " + str(response.score) + " " + str(response.bucket_name) + " " + str(response.object_name))
-
+        print("ImageService client created")
+        test_speed = 0
+        start_time = time.time()
+        for i in range(1, 1000):
+            response = stub.GetSpoofingResult(my_pb2.ImageRequest(bucket_name=BUCKET_NAME, object_name=OBJECT_NAME))
+            print("ImageService client received: Is   " + str(response.is_spoofed) + " " + str(
+                response.score) + " " + str(response.bucket_name) + " " + str(response.object_name))
+        test_speed += time.time() - start_time
+        print("Test speed for 1000: " + str(test_speed))
 
 if __name__ == '__main__':
     logging.basicConfig()
